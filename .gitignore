@@ -3,9 +3,5 @@ npm-debug.log
 /inline
 /worker
 /dist
-/full
+/demo/build
 package-lock.json
-/preact.js
-/preact.js.map
-/react.js
-/react.js.map

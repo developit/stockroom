@@ -1,0 +1,97 @@
+@import url('~preact-material-components/Button/style.css');
+@import url('~preact-material-components/LinearProgress/style.css');
+
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #f9f9f9;
+	font: 400 14px/1.3 'Helvetica Neue',verdana,arial,sans-serif;
+	color: #555;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	touch-action: manipulation;
+	-ms-touch-action: manipulation;
+}
+
+.masthead {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0 50px;
+	margin-bottom: -40px;
+	background: #e3e3e3;
+	box-shadow: inset 0 0 30px rgba(0,0,0,0.1), 0 0 1px -.5px #fff;
+}
+.masthead img {
+	flex: 0 0 auto;
+	width: 128px;
+	height: 128px;
+	position: relative;
+	left: -20px;
+}
+.masthead h1 {
+	flex: 0 0 auto;
+	color: #c93f25;
+	font-size: 300%;
+	font-weight: 300;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+	text-align: center;
+}
+.masthead .github {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px 15px 12px;
+	background: #c93f25;
+	border-radius: 0 0 0 5px;
+	color: #fff;
+}
+
+button {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+h2, h3 {
+	margin: 0;
+	padding: 10px 0;
+	font-weight: 400;
+}
+
+h2 {
+	font-size: 150%;
+}
+
+.demo {
+	max-width: 450px;
+	margin: 10px auto;
+	padding: 20px;
+	background: #FFF;
+	border-radius: 3px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width:530px) {
+	.masthead h1 {
+		font-size: 200%;
+	}
+	.demo {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
+
+.spams {
+	min-height: 50px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+.spam {
+	position: relative;
+	top: -1px;
+	padding: 3px 10px;
+	border-top: 1px solid #eee;
+}

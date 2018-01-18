@@ -19,9 +19,13 @@
   },
   "eslintConfig": {
     "extends": "eslint-config-developit",
+    "globals": {
+      "PRERENDER": 0
+    },
     "rules": {
       "prefer-rest-params": 0,
-      "jest/valid-expect": 0
+      "jest/valid-expect": 0,
+      "react/display-name": 0
     }
   },
   "bundlesize": [
