@@ -2,8 +2,7 @@ module.exports = function(config) {
 	config.set({
 		frameworks: ['mocha', 'chai-sinon'],
 		reporters: ['mocha'],
-		// browsers: ['ChromeHeadless'],
-		browsers: ['Chrome'],
+		browsers: ['ChromeHeadless'],
 
 		files: [
 			{ pattern: __dirname+'/../node_modules/babel-polyfill/dist/polyfill.js', watched: false, included: true },
