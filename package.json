@@ -1,0 +1,91 @@
+{
+  "name": "stockroom",
+  "version": "1.0.0",
+  "description": "Offload your store management to a worker.",
+  "source": "src/index.js",
+  "module": "dist/stockroom.es.js",
+  "main": "dist/stockroom.js",
+  "umd:main": "dist/stockroom.umd.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "build": "npm-run-all --silent bundle size docs",
+    "bundle": "microbundle src/index.js -o dist/stockroom.js && microbundle src/inline.js -o inline/index.js && microbundle src/worker.js -o worker/index.js",
+    "size": "strip-json-comments --no-whitespace dist/stockroom.js | gzip-size && bundlesize",
+    "docs": "documentation readme src/*.js -q --section API && npm run -s fixreadme",
+    "fixreadme": "node -e 'var fs=require(\"fs\");fs.writeFileSync(\"README.md\", fs.readFileSync(\"README.md\", \"utf8\").replace(/^-   /gm, \"- \"))'",
+    "test": "eslint src test && npm run bundle && karma start test/karma.conf.js --single-run",
+    "prepare": "npm t",
+    "release": "npm t && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-developit",
+    "rules": {
+      "prefer-rest-params": 0,
+      "jest/valid-expect": 0
+    }
+  },
+  "bundlesize": [
+    {
+      "path": "dist/stockroom.js",
+      "maxSize": "1kb"
+    },
+    {
+      "path": "worker/index.js",
+      "maxSize": "1kb"
+    },
+    {
+      "path": "inline/index.js",
+      "maxSize": "300b"
+    }
+  ],
+  "files": [
+    "src",
+    "dist",
+    "inline",
+    "worker"
+  ],
+  "keywords": [
+    "preact",
+    "unistore",
+    "state machine",
+    "worker",
+    "threads",
+    "redux"
+  ],
+  "repository": "developit/stockroom",
+  "author": "Jason Miller <jason@developit.ca>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "bundlesize": "^0.15.3",
+    "chai": "^4.1.2",
+    "documentation": "^4.0.0",
+    "eslint": "^4.12.1",
+    "eslint-config-developit": "^1.1.1",
+    "jest": "^21.2.1",
+    "karma": "^2.0.0",
+    "karma-chai-sinon": "^0.1.5",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.9",
+    "microbundle": "^0.3.1",
+    "mocha": "^4.1.0",
+    "npm-run-all": "^4.1.2",
+    "sinon": "^4.1.6",
+    "sinon-chai": "^2.14.0",
+    "strip-json-comments-cli": "^1.0.1",
+    "unistore": "^3.0.3",
+    "webpack": "^3.10.0",
+    "workerize-loader": "^1.0.1"
+  },
+  "peerDependencies": {
+    "unistore": "*"
+  }
+}
