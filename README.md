@@ -6,6 +6,8 @@
 
 # Stockroom
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/developit/stockroom.svg)](https://greenkeeper.io/)
+
 > Offload your store management to a worker.
 
 Stockroom seamlessly runs a [Unistore] store (and its actions) in a Web Worker, setting up optimized bidirectional sync so you can also use & subscribe to it on the main thread.
