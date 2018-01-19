@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/xwXndP7.png" width="300" height="300" alt="stockroom">
+  <img src="https://i.imgur.com/vLpl41x.jpg" width="2000" alt="stockroom">
   <br>
   <a href="https://www.npmjs.org/package/stockroom"><img src="https://img.shields.io/npm/v/stockroom.svg?style=flat" alt="npm"></a> <a href="https://travis-ci.org/developit/stockroom"><img src="https://travis-ci.org/developit/stockroom.svg?branch=master" alt="travis"></a>
 </p>
