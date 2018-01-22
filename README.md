@@ -56,7 +56,7 @@ increment()
 ```
 
 
-The second file is our worker code, which runs in the background thread. Here we import Stockroom's worker-side "other half", `stockroom/worker`.  This function returns a store instance just like `createStore()` does in [Unistore], but sets things up to synchronize with the main/parent thread.  It also adds a `registerActions` method to the store, which you can use to define globally-available actions for that store.  These actions can be triggered from the main thread by invoking `store.action('theActionName')` and calling the funtion it returns.
+The second file is our worker code, which runs in the background thread. Here we import Stockroom's worker-side "other half", `stockroom/worker`.  This function returns a store instance just like `createStore()` does in [Unistore], but sets things up to synchronize with the main/parent thread.  It also adds a `registerActions` method to the store, which you can use to define globally-available actions for that store.  These actions can be triggered from the main thread by invoking `store.action('theActionName')` and calling the function it returns.
 
 **worker.js**:
 
