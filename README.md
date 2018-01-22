@@ -119,7 +119,7 @@ For SSR/prerendering, pass your exported worker store through this enhancer
 
 ```javascript
 let store
-if (SUPPORTS_WEB_WORKERS) {
+if (SUPPORTS_WEB_WORKERS === false) {
 	let createStore = require('stockroom/inline')
 	store = createStore(require('./store.worker'))
 }
