@@ -24,10 +24,7 @@ export default function createStore(worker) {
 	function handleMessage({ data }) {
 
 		if (typeof data === 'object') {
-			if ('pop' in data && data.length === 1) {
-				process(data[0]);
-			}
-			else if (data.length > 0) {
+			if ('pop' in data) {
 				for (let i=0; i<data.length; i++) process(data[i]);
 			}
 			else {
