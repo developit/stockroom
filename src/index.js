@@ -20,19 +20,16 @@ export default function createStore(worker) {
 		state = {},
 		sendQueue = [],
 		initialized = false;
-	
+
 	function handleMessage({ data }) {
-		if (typeof data!=='object') {}
-		else if ('pop' in data) {
-			if (data.length===1) {
-				process(data[0]);
-			}
-			else {
+
+		if (typeof data === 'object') {
+			if ('pop' in data) {
 				for (let i=0; i<data.length; i++) process(data[i]);
 			}
-		}
-		else {
-			process(data);
+			else {
+				process(data);
+			}
 		}
 	}
 
@@ -81,7 +78,7 @@ export default function createStore(worker) {
 			sendQueue.length = 0;
 		}
 	}
-	
+
 	function unsubscribe(listener) {
 		let out = [];
 		for (let i=0; i<listeners.length; i++) {
