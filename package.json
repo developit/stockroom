@@ -1,6 +1,6 @@
 {
   "name": "stockroom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offload your store management to a worker.",
   "source": "src/index.js",
   "module": "dist/stockroom.es.js",
