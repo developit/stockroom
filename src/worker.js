@@ -83,7 +83,7 @@ export default function createWorkerStore(initialState) {
 		let update = diff(state, currentState);
 		// console.log('sub: ', { action, lock, update, state, currentState });
 		currentState = state;
-		send({ type: '@@STATE', update, action, partial: true });
+		send({ type: '@@STATE', update, action: action && action.name, partial: true });
 	});
 
 	store.registerActions = newActions => {
