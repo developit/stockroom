@@ -17,14 +17,12 @@ Stockroom seamlessly runs a [Unistore] store (and its actions) in a Web Worker, 
 - **Convenient** action selector shorthand - no action creator needed for simple actions
 - **Gracefully degrades** - feature-detect Worker support and fall back to `stockroom/inline`
 
-
 ## Table of Contents
 
 - [Install](#install)
 - [Usage](#usage)
 - [API](#api)
 - [License](#license)
-
 
 ## Install
 
@@ -33,7 +31,6 @@ Stockroom requires that you install [unistore](https://github.com/developit/unis
 ```sh
 npm install --save unistore stockroom
 ```
-
 
 ## Usage
 
@@ -55,7 +52,6 @@ store.subscribe(console.log)
 increment()
 ```
 
-
 The second file is our worker code, which runs in the background thread. Here we import Stockroom's worker-side "other half", `stockroom/worker`.  This function returns a store instance just like `createStore()` does in [Unistore], but sets things up to synchronize with the main/parent thread.  It also adds a `registerActions` method to the store, which you can use to define globally-available actions for that store.  These actions can be triggered from the main thread by invoking `store.action('theActionName')` and calling the function it returns.
 
 **worker.js**:
@@ -73,7 +69,6 @@ store.registerActions( store => ({
 
 export default store  // if you wish to use `stockroom/inline`
 ```
-
 
 ### API
 
@@ -165,8 +160,10 @@ Returns **WorkerStore** workerStore (enhanced unistore store)
 
 [MIT License](https://oss.ninja/mit/developit) © [Jason Miller](https://jasonformat.com/)
 
-
 [unistore]: https://github.com/developit/unistore
+
 [preact]: https://github.com/developit/preact
+
 [worker-loader]: https://github.com/webpack-contrib/worker-loader
+
 [workerize-loader]: https://github.com/developit/workerize-loader
