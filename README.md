@@ -155,6 +155,15 @@ store.registerActions({
 
 Returns **WorkerStore** workerStore (enhanced unistore store)
 
+#### freeze
+
+Queue all additional processing until unfrozen.
+freeze/unfreeze manages a cumulative lock:
+unfreeze must be called as many times as freeze was called in order to remove the lock.
+
+#### unfreeze
+
+Remove a freeze lock and process queued work.
 
 ### License
 
