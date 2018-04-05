@@ -71,6 +71,7 @@
     "documentation": "^4.0.0",
     "eslint": "^4.16.0",
     "eslint-config-developit": "^1.1.1",
+    "gzip-size-cli": "^2.1.0",
     "jest": "^22.1.4",
     "karma": "^2.0.0",
     "karma-chai-sinon": "^0.1.5",
