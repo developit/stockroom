@@ -57,7 +57,7 @@ export function diff(obj, prev) {
 }
 
 function diffOne(obj, prev) {
-	if (typeof obj==='object' && typeof prev==='object') {
+	if (obj!=null && prev!=null && typeof obj==='object' && typeof prev==='object') {
 		return diff(obj, prev);
 	}
 	return obj;
