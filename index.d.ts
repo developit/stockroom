@@ -7,4 +7,4 @@ import { Store } from "unistore";
  */
 export default function createStore<WorkerState>(
 	worker: WorkerStore<WorkerState>
-): Store<WorkerState>;
+): WorkerStore<WorkerState>;

@@ -25,6 +25,12 @@ export interface WorkerStore<WorkerState> extends Store<WorkerState> {
 	new(): WorkerStore<WorkerState>;
 
 	/**
+	 * Retrieves the given action.
+	 * @param action Action to retrieve (Worker actions take strings).
+	 */
+	action(action: Action<WorkerState> | string): (...params: any[]) => void;
+
+	/**
 	 * List of registered actions.
 	 */
 	actions: Actions<WorkerState>;
