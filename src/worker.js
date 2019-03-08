@@ -30,7 +30,7 @@ export default function createWorkerStore(initialState) {
 		onThaw = [],
 		sendQueue = [],
 		lock = false;
-	
+
 	for (let i in initialState) currentState[i] = initialState[i];
 
 	function send(opts) {
@@ -40,7 +40,7 @@ export default function createWorkerStore(initialState) {
 	}
 
 	function processSendQueue() {
-		if (typeof postMessage==='function') postMessage(sendQueue);
+		if (typeof postMessage==='function' && postMessage.length === 1) postMessage(sendQueue);
 		sendQueue.length = 0;
 	}
 
