@@ -8,12 +8,12 @@ let stockroom; // eslint-disable-line
 
 /** Given a Web Worker instance, sets up RPC-based synchronization with a WorkerStore running within it.
  *	@memberof module:stockroom
- *  @param {Worker} worker		An instantiated Web Worker (eg: `new Worker('./store.worker.js')`)
- *  @returns {Store} synchronizedStore - a mock unistore store instance sitting in front of the worker store.
+ *	@param {Worker} worker		An instantiated Web Worker (eg: `new Worker('./store.worker.js')`)
+ *	@returns {Store} synchronizedStore - a mock unistore store instance sitting in front of the worker store.
  *	@example
  *	import createStore from 'stockroom'
  *	import StoreWorker from 'worker-loader!./store.worker'
- *	let store = createStore(new StoreWorker)
+ *	let store = createStore(new StoreWorker())
  */
 export default function createStore(worker) {
 	let listeners = [],
