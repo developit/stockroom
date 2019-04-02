@@ -1,17 +1,17 @@
 /** Used to run your whole store on the main thread.
- *	Useful non-worker environments or as a fallback.
+ *	Useful for non-worker environments or as a fallback.
  *	@name module:stockroom/inline
  */
 let inline; // eslint-disable-line
 
 /** For SSR/prerendering, pass your exported worker store through this enhancer
- *  to make an inline synchronous version that runs in the same thread.
+ *	to make an inline synchronous version that runs in the same thread.
  *	@memberof module:stockroom/inline
- *  @param {WorkerStore} workerStore	The exported `store` instance that would have been invoked in a Worker
- *  @returns {Store} inlineStore - a unistore instance with centralized actions
+ *	@param {WorkerStore} workerStore	The exported `store` instance that would have been invoked in a Worker
+ *	@returns {Store} inlineStore - a unistore instance with centralized actions
  *	@example
  *	let store
- *	if (SUPPORTS_WEB_WORKERS) {
+ *	if (SUPPORTS_WEB_WORKERS === false) {
  *		let createStore = require('stockroom/inline')
  *		store = createStore(require('./store.worker'))
  *	}

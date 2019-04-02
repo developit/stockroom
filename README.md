@@ -91,7 +91,7 @@ Given a Web Worker instance, sets up RPC-based synchronization with a WorkerStor
 ```javascript
 import createStore from 'stockroom'
 import StoreWorker from 'worker-loader!./store.worker'
-let store = createStore(new StoreWorker)
+let store = createStore(new StoreWorker())
 ```
 
 Returns **Store** synchronizedStore - a mock unistore store instance sitting in front of the worker store.
@@ -99,12 +99,12 @@ Returns **Store** synchronizedStore - a mock unistore store instance sitting in 
 #### module:stockroom/inline
 
 Used to run your whole store on the main thread.
-Useful non-worker environments or as a fallback.
+Useful for non-worker environments or as a fallback.
 
 ##### createInlineStore
 
 For SSR/prerendering, pass your exported worker store through this enhancer
- to make an inline synchronous version that runs in the same thread.
+to make an inline synchronous version that runs in the same thread.
 
 **Parameters**
 
