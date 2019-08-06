@@ -105,6 +105,26 @@ describe('createStore()', () => {
 			expect(store.getState(), 'main thread state').to.have.property('count', 2);
 		});
 
+		it('should batch actions', async () => {
+			postMessage.reset();
+
+			let increment = store.action('increment');
+			increment({ x: 'y' });
+			increment({ x: 'y' });
+
+			await sleep(10);
+
+			expect(postMessage).to.have.been.calledOnce.and.calledWith([
+				{ type: '@@ACTION', action: { type: 'increment', params: [{ x: 'y' }] } },
+				{ type: '@@ACTION', action: { type: 'increment', params: [{ x: 'y' }] } }
+			]);
+
+			let state = await worker.getState();
+
+			expect(state, 'worker state').to.have.property('count', 4);
+			expect(store.getState(), 'main thread state').to.have.property('count', 4);
+		});
+
 		it('should invoke inline action on main thread', async () => {
 			postMessage.reset();
 

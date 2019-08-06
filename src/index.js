@@ -20,7 +20,7 @@ export default function createStore(worker) {
 		state = {},
 		sendQueue = [],
 		initialized = false;
-	
+
 	function handleMessage({ data }) {
 		if (typeof data!=='object') {}
 		else if ('pop' in data) {
@@ -38,14 +38,13 @@ export default function createStore(worker) {
 
 	function process(data) {
 		let { type, overwrite, update, action, initial, partial } = data;
-
 		if (type==='@@STATE') {
 			if (partial===true) {
 				update = applyUpdate(state, update);
 				overwrite = true;
 			}
 
-			setState(update, overwrite===true, action, false);
+			setState(update, overwrite===true, action, false, data.params);
 
 			if (initial) {
 				initialized = true;
@@ -57,7 +56,7 @@ export default function createStore(worker) {
 
 	worker.addEventListener('message', handleMessage);
 
-	function setState(update, overwrite, action, replicate) {
+	function setState(update, overwrite, action, replicate, params) {
 		let oldState = state;
 		state = assign(overwrite ? {} : assign({}, state), update);
 		if (replicate) {
@@ -66,7 +65,7 @@ export default function createStore(worker) {
 			// send({ type: '@@STATE', overwrite, update, action });
 		}
 		let currentListeners = listeners;
-		for (let i=0; i<currentListeners.length; i++) currentListeners[i](state, action);
+		for (let i=0; i<currentListeners.length; i++) currentListeners[i](state, action, update, params);
 	}
 
 	function send(opts) {
@@ -81,7 +80,7 @@ export default function createStore(worker) {
 			sendQueue.length = 0;
 		}
 	}
-	
+
 	function unsubscribe(listener) {
 		let out = [];
 		for (let i=0; i<listeners.length; i++) {
@@ -102,7 +101,7 @@ export default function createStore(worker) {
 				if (typeof action==='string') action = { type: action, params: params.filter(notEvent) };
 				if (action && !action.type) {
 					// console.warn('Action running on main thread: ', actionCreator.name);
-					setState(action, false, actionCreator.name, true);
+					setState(action, false, actionCreator.name, true, params);
 				}
 				else {
 					// console.log('ACTION', action.type, ...(action.params || [action.payload]));

@@ -1,5 +1,5 @@
 import createStore from 'unistore';
-import { diff, applyUpdate } from './util';
+import { applyUpdate } from './util';
 
 
 /** The other half of stockroom, which runs inside a Web Worker.
@@ -78,12 +78,11 @@ export default function createWorkerStore(initialState) {
 	}
 	if (typeof addEventListener==='function') addEventListener('message', handleMessage);
 
-	store.subscribe( (state, action) => {
+	store.subscribe( (state, action, update, params) => {
 		if (lock===true) return;
-		let update = diff(state, currentState);
 		// console.log('sub: ', { action, lock, update, state, currentState });
 		currentState = state;
-		send({ type: '@@STATE', update, action: action && action.name, partial: true });
+		send({ type: '@@STATE', update, action: action && action.name, partial: true, params });
 	});
 
 	store.registerActions = newActions => {
